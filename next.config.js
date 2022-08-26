@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   swcMinify: true,
   env: {
-    backendURL: 'http://localhost:4000/api'
+    backendURL: 'http://localhost:4000/api',
+    frontendURL: 'http://localhost:3000/enlaces' 
   }
 }
 

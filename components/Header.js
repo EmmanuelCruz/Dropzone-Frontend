@@ -1,18 +1,26 @@
 import React from 'react'
 import Link from 'next/link'
 import useAuth from '../hooks/useAuth'
+import useApp from '../hooks/useApp'
+import { useRouter } from "next/router";
 
 const Header = () => {
 
   const { usuario, cerrarSesion } = useAuth()
+  const { limpiarState } = useApp()
+
+  const router = useRouter()
+
+  const redireccionar = () => {
+    router.push('/')
+    limpiarState()
+  }
 
   return (
     <header className='py-8 flex flex-col md:flex-row items-center justify-between'>
-      <Link href='/' >
-        <a>
-          <img className='w-64 mb-8 md:mb-0' src='logo.svg'/>
-        </a>
-      </Link>
+
+      <img onClick={() => redireccionar()} className='w-64 mb-8 md:mb-0 cursor-pointer' src='logo.svg'/>
+
 
       {usuario ? (
         <div className='flex items-center'>
