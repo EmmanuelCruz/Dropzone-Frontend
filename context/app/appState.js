@@ -6,7 +6,9 @@ import {
   CREAR_ENLACE_EXITO,
   CREAR_ENLACE_ERROR,
   CARGANDO,
-  LIMIPAR_STATE
+  LIMIPAR_STATE,
+  AGREGAR_PASSWORD,
+  AGREGAR_DESCARGAS
 } from "../../types";
 import appContext from "./appContext";
 import appReducer from "./appReducer";
@@ -80,7 +82,6 @@ const AppState = ({ children }) => {
         type: CREAR_ENLACE_EXITO,
         payload: resultado.data.msg
       })
-      console.log(resultado)
     } catch (error) {
       console.error(error);
     }
@@ -89,6 +90,20 @@ const AppState = ({ children }) => {
   const limpiarState = () => {
     dispatch({
       type: LIMIPAR_STATE
+    })
+  }
+
+  const agregarPassword = password => {
+    dispatch({
+      type: AGREGAR_PASSWORD,
+      payload: password
+    })
+  }
+
+  const agregaNumeroDescargas = descargas => {
+    dispatch({
+      type: AGREGAR_DESCARGAS,
+      payload: descargas
     })
   }
 
@@ -106,7 +121,9 @@ const AppState = ({ children }) => {
         muestraAlerta,
         subirArchivo,
         crearEnlace,
-        limpiarState
+        limpiarState,
+        agregarPassword,
+        agregaNumeroDescargas
       }}
     >
       {children}

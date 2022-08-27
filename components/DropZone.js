@@ -2,10 +2,13 @@ import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import clienteAxios from '../config/axios'
 import useApp from '../hooks/useApp'
+import useAuth from '../hooks/useAuth'
+import Formulario from './Formulario'
 
 const DropZone = () => {
 
   const { muestraAlerta, subirArchivo, cargando, crearEnlace } = useApp()
+  const { autenticado } = useAuth()
 
   const onDropAccepted = useCallback(async (acceptedFiles) => {
     // Ceando formdata
@@ -36,6 +39,10 @@ const DropZone = () => {
           <ul>
             {archivos}
           </ul>
+
+          {
+            autenticado && <Formulario />
+          }
 
           {cargando ? (
             <p>Cargando...</p>

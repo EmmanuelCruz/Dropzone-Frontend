@@ -13,7 +13,10 @@ export default function Home() {
   const { mensaje_archivo, url } = useApp()
 
   useEffect(() => {
-    usuarioAutenticado()
+    const token= localStorage.getItem('ns_token')
+    if(token){
+      usuarioAutenticado()
+    }
   }, [])
 
   return (
